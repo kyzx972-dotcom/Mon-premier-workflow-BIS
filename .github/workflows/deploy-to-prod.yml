@@ -13,6 +13,16 @@ jobs:
       - name: Cloner le dépôt
         uses: actions/checkout@v4
 
+      - name: Diagnostic des secrets
+        run: |
+          echo "FTP_SERVER   : ${#SERVER} caractères"
+          echo "FTP_USERNAME : ${#USERNAME} caractères"
+          echo "FTP_PASSWORD : ${#PASSWORD} caractères"
+        env:
+          SERVER: ${{ secrets.FTP_SERVER }}
+          USERNAME: ${{ secrets.FTP_USERNAME }}
+          PASSWORD: ${{ secrets.FTP_PASSWORD }}
+
       - name: Envoyer les fichiers en FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -21,4 +31,3 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
           server-dir: /htdocs/
- 
