@@ -21,12 +21,6 @@ jobs:
         uses: actions/checkout@v4
  
       - name: Installer et construire
-
-        run: |
-
-          npm ci
-
-          npm run build
  
       - name: Envoyer les fichiers en FTP
 
