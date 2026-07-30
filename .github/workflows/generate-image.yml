@@ -89,3 +89,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./images
+      - name: Uploader l'image en tant qu'artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-generee
+          path: images/*.png
